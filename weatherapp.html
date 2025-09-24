@@ -4,49 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather App</title>
-    
-    
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <div class="a">
-    <label>Weather App: </label><br><br>
-    <label for="">Type City Name</label>
-    </div>
 
-    <div class="s">
-    <textarea id="getValue"></textarea><br>
-    <button id="getValueBtn">Get Value</button>
-    </div>
+      <div class="container">
+    <h2>🌤 Weather App</h2>
+    <label>Type City Name:</label><br>
+    <input id="getValue" placeholder="e.g. Kathmandu"><br><br>
+    <button id="getValueBtn">Get Weather</button>
     <div id="result"></div>
-
+  </div>
 
 </body>
 
 </html>
-<script>
-    let btn=document.getElementById("getValueBtn")
-    let textarea=document.getElementById("getValue")
-    let resultDiv = document.getElementById("result");
-btn.addEventListener("click",()=>{
-    let cityName=textarea.value.trim();
-    if (cityName==="")
-{
-    resultDiv.innerHTML = "⚠️ Please type a city name.";
-        return;
-}
-let p=fetch(`http://goweather.xyz/weather/${cityName}`)
-p.then((response)=>{
-    return response.json();
-}).then((data)=>{
-    console.log(`The weather of city ${data}`);
-     resultDiv.innerHTML = `
-            <h3>Weather in ${cityName}</h3>
-            <p>Temperature: ${data.temperature}</p>
-            <p>Wind: ${data.wind}</p>
-            <p>Description: ${data.description}</p>
-          `;
-})
-
-})
-</script>
+<script src="script.js"></script>
